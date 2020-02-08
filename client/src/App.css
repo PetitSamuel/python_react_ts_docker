@@ -1,0 +1,26 @@
+.App {
+  background-color: white;
+
+}
+
+.App-header {
+  display: flex; 
+  text-align: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+#side-bar {
+  flex-grow: 1;
+  border-right: 1px solid black;
+}
+
+#side-bar img {
+  transform: rotate(90deg);
+  width: 100px;
+  border-radius: 50%;
+}
+
+#main {
+  flex-grow: 3;
+}
