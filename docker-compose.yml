@@ -21,10 +21,12 @@ services:
     redis:
         image: redis
     db:
-        build: ./db
+        image: mariadb:latest
         volumes: 
             - ./db:/var/lib/mysql
         environment:
+            #to connect : 
+            #mysql --host=127.0.0.1 --port=3306 -u root -p
             MYSQL_DATABASE: db
             MYSQL_USER: user
             MYSQL_PASSWORD: password
@@ -32,3 +34,5 @@ services:
         ports:
             - "3306:3306"
         restart: on-failure
+        expose: 
+            - "3306"

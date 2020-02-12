@@ -2,3 +2,5 @@ flask
 redis
 flask-cors
 mysql-connector
+sqlalchemy
+flask_sqlalchemy

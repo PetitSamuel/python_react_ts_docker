@@ -12,6 +12,4 @@
 .env
 npm-debug.log
 
-db/aria_log*
-db/ib*
-db/multi-master.info
+db/*
