@@ -13,3 +13,4 @@ npm-debug.log
 
 db/*
 backend/__pycache__
+redis/
