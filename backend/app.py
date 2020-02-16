@@ -6,7 +6,7 @@ from redis import Redis
 from flask_cors import CORS
 from healthcheck import HealthCheck
 import models
-from models import db, User, users_schema, user_schema, validation
+from models import db, User, users_schema, user_schema, ma
 from resources import Api, user
 
 app = Flask(__name__)
@@ -28,7 +28,7 @@ app.config.update({
 
 api = Api(app, prefix='/api')
 models.init_app(app)
-validation.init_app(app)
+ma.init_app(app)
 
 # Default to 404
 @app.errorhandler(404)

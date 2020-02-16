@@ -15,5 +15,4 @@ def json_required(f):
             return {'message': 'No input data provided (or not in json format)'}, 400
         request.r_data = json
         return f(*args, **kwargs)
-    print("RETURNING")
     return decorated_function

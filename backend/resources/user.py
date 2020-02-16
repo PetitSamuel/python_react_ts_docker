@@ -8,10 +8,8 @@ from . import json_required
 from models import *
 
 class UserAPi(Resource):
-    # POST -> Create a new user account
     @json_required
     def post(self):
-        # Validate and deserialize input
         new_user = User()
         try:
             new_user = user_schema.load(request.r_data, partial=True)
@@ -27,6 +25,5 @@ class UserAPi(Resource):
         # Save the new user into the database
         db.session.add(new_user)
         db.session.commit()
-
-        # HTTP 204 is "No Content"
+        # 204 : success
         return None, 204
