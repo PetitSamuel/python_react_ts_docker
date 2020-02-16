@@ -9,7 +9,7 @@
 
 # misc
 .DS_Store
-.env
 npm-debug.log
 
 db/*
+backend/__pycache__

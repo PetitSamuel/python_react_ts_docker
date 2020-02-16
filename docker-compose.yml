@@ -1,4 +1,4 @@
-version: '2'
+version: '3.7'
 services:
     backend:
         build: ./backend
@@ -8,7 +8,16 @@ services:
             - ./backend:/backend
         depends_on:
             - redis 
+            - db
         restart: on-failure
+        environment:
+            - FLASK_ENV=${FLASK_ENV}
+            - FLASK_SECRET=${FLASK_SECRET}
+            - PUBLIC_HOST=${PUBLIC_HOST}
+            - MYSQL_HOST=db
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
     client:
         build: ./frontend
         restart: on-failure
@@ -16,23 +25,26 @@ services:
             - "3000:3000"
         volumes:
             - ./frontend:/frontend
-        depends_on: 
+        depends_on:
             - backend
     redis:
         image: redis
+        restart: on-failure
+        volumes:
+            - $REDIS_DATA:/data
     db:
         image: mariadb:latest
-        volumes: 
-            - ./db:/var/lib/mysql
+        volumes:
+            - $MYSQL_DATA:/var/lib/mysql
         environment:
             #to connect : 
             #mysql --host=127.0.0.1 --port=3306 -u root -p
-            MYSQL_DATABASE: db
-            MYSQL_USER: user
-            MYSQL_PASSWORD: password
-            MYSQL_ROOT_PASSWORD: password
+            - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+            - MYSQL_USER=${MYSQL_USER}
+            - MYSQL_PASSWORD=${MYSQL_PASSWORD}
+            - MYSQL_DATABASE=${MYSQL_DATABASE}
         ports:
             - "3306:3306"
         restart: on-failure
-        expose: 
+        expose:
             - "3306"
