@@ -10,9 +10,7 @@
 # misc
 .DS_Store
 npm-debug.log
-*.pyc
 
 db/*
-backend/__pycache__
-backend/resources/__pycache__/*
+__pycache__/
 redis/
