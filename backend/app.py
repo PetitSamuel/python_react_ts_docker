@@ -4,25 +4,20 @@ from datetime import datetime
 from flask import Flask, Response, request, jsonify, render_template
 from redis import Redis
 from flask_cors import CORS
+from healthcheck import HealthCheck
 import models
-from models import db, User
+from models import db, User, users_schema, user_schema, ma
+from resources import Api, user
 
 app = Flask(__name__)
 redis = Redis(host='redis', port=6379)
 CORS(app)
 
-# Configuration from environment variables by Docker Compose
+# config from .env file linked through docker-compose
 app.config.update({
     'SQLALCHEMY_TRACK_MODIFICATIONS': False,
     'SECRET_KEY': environ['FLASK_SECRET'],
     'PREFERRED_URL_SCHEME': 'https',
-    #'ROOT_EMAIL': environ['ROOT_EMAIL'],
-    #'RATELIMIT_ENABLED': True if environ['FLASK_ENV'] == 'production' else False,
-    # Database 0 is for ratelimiting
-    #'RATELIMIT_STORAGE_URL': 'redis://redis:6379/0',
-    # Database 1 is for background tasks
-    #'CELERY_RESULT_BACKEND': 'redis://redis:6379/1',
-    #'CELERY_BROKER_URL': 'redis://redis:6379/1',
     'SQLALCHEMY_DATABASE_URI': 'mysql+mysqlconnector://{user}:{password}@{host}/{database}'.format(
         user = environ['MYSQL_USER'],
         password = environ['MYSQL_PASSWORD'],
@@ -31,22 +26,20 @@ app.config.update({
     ),
 })
 
+api = Api(app, prefix='/api')
 models.init_app(app)
+ma.init_app(app)
 
+# Default to 404
 @app.errorhandler(404)
 def not_found(e):
-    if request.path.startswith('/api/v1'):
+    if request.path.startswith('/api'):
         return jsonify({'message': 'Not found'}), 404
     return '404 : not found', 404
 
 @app.route('/')
 def hello():
-    redis.incr('hits')
-    user = User.find_by_username('root')
-    return jsonify({
-        'user': user.id,
-        'username': user.username,
-    })
+    return jsonify({"no place like": "127.0.0.1"})
 
 @app.before_first_request
 def init_db():
@@ -59,6 +52,16 @@ def init_db():
     if not root:
         print('**** NO ROOT USER FOUND ****')
     print('*** ROOT USER FOUND ***')
+
+def db_ok():
+    return User.query.count() >= 0, "database ok"
+
+# Set up health check
+health = HealthCheck(app, '/health', success_ttl=None, failed_ttl=None)
+health.add_check(db_ok)
+
+# Mount our API endpoints
+api.add_resource(user.UserAPi, '/auth/register')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

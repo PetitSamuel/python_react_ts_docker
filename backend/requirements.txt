@@ -4,3 +4,10 @@ flask-cors
 flask-sqlalchemy
 mysql
 mysql-connector
+healthcheck
+marshmallow
+flask_marshmallow
+flask_restful
+datetime
+marshmallow-sqlalchemy
+marshmallow_sqlalchemy
