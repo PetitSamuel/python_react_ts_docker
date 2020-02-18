@@ -18,6 +18,7 @@ app.config.update({
     'SQLALCHEMY_TRACK_MODIFICATIONS': False,
     'SECRET_KEY': environ['FLASK_SECRET'],
     'PREFERRED_URL_SCHEME': 'https',
+    'ROOT_EMAIL': environ['ROOT_EMAIL'],
     'SQLALCHEMY_DATABASE_URI': 'mysql+mysqlconnector://{user}:{password}@{host}/{database}'.format(
         user = environ['MYSQL_USER'],
         password = environ['MYSQL_PASSWORD'],

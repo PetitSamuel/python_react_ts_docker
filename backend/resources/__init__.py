@@ -1,6 +1,6 @@
 from functools import wraps
 
-from flask import request, jsonify
+from flask import request
 import flask_restful
 
 class Api(flask_restful.Api):

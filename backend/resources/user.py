@@ -12,7 +12,7 @@ class UserAPi(Resource):
     def post(self):
         new_user = User()
         try:
-            new_user = user_schema.load(request.r_data, partial=True)
+            new_user = user_schema.load(request.r_data)
         except ValidationError as err:
             return err.messages, 422
         if User.find_by_username(new_user.username):
@@ -25,5 +25,5 @@ class UserAPi(Resource):
         # Save the new user into the database
         db.session.add(new_user)
         db.session.commit()
-        # 204 : success
+        # success
         return None, 204
