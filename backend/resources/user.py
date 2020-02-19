@@ -20,7 +20,7 @@ class UserAPi(Resource):
         if User.find_by_email(new_user.email):
             return {'message': 'A user with email {} already exists'.format(new_user.email)}, 400
 
-        new_user.registration_time = datetime.now()
+        new_user.created_at = datetime.now()
 
         # Save the new user into the database
         db.session.add(new_user)

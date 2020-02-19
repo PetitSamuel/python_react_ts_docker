@@ -7,7 +7,7 @@ from flask_cors import CORS
 from healthcheck import HealthCheck
 import models
 from models import db, User, users_schema, user_schema, ma
-from resources import Api, user
+from resources import Api, user, quiz
 
 app = Flask(__name__)
 redis = Redis(host='redis', port=6379)
@@ -40,7 +40,8 @@ def not_found(e):
 
 @app.route('/')
 def hello():
-    return jsonify({"no place like": "127.0.0.1"})
+    #return jsonify({"no place like": "127.0.0.1"})
+    return user_schema.dumps(User.find_by_id(1))
 
 @app.before_first_request
 def init_db():
@@ -63,6 +64,7 @@ health.add_check(db_ok)
 
 # Mount our API endpoints
 api.add_resource(user.UserAPi, '/auth/register')
+api.add_resource(quiz.QuizAPi, '/quiz')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

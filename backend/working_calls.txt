@@ -1,0 +1,31 @@
+This is a list of endpoints & details for http requests, working for this API
+
+User registration :
+
+endpoint : /api/auth/register
+POST
+headers - Content-Type: application/json
+body:
+{
+	"username": "saaam",
+	"email": "azd@lol.com",
+	"first_name": "Samuel",
+	"last_name": "Petit",
+	"is_admin": "True"
+}
+
+endpoint : /api/quiz
+POST - new quiz
+headers - Content-Type: application/json
+body:
+{
+    "name": "A quiz renamed"
+}
+
+PATCH - rename quiz 
+headers - Content-Type: application/json
+body:
+{
+    "name": "A quiz renamed",
+    "id": "1"
+}

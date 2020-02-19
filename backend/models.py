@@ -46,6 +46,19 @@ class Quiz(db.Model):
     created_at = db.Column(db.DateTime, default=datetime.now())
     questions = db.relationship('QuizToQuestionLink', backref='quiz')
 
+    @classmethod
+    def find_by_author_id(cls, author_id):
+        return cls.query.filter_by(author_id=author_id).first()
+
+    @classmethod
+    def find_by_id(cls, id):
+        return cls.query.filter_by(id=id).first()
+
+    @classmethod
+    def find_by_author_and_name(cls, author_id, name):
+        return cls.query.filter_by(author_id=author_id, name=name).first()
+
+
 class Question(db.Model):
     __tablename__ = "question"
     id = db.Column(db.Integer, primary_key=True)
@@ -55,12 +68,36 @@ class Question(db.Model):
     quizzes = db.relationship('QuizToQuestionLink', backref='question')
     votes = db.relationship('Vote', backref='question')
     sessions = db.relationship('Session', backref='question')
+   
+    @classmethod
+    def find_by_username(cls, username):
+        return cls.query.filter_by(username=username).first()
+
+    @classmethod
+    def find_by_author_id(cls, author_id):
+        return cls.query.filter_by(author_id=author_id).first()
+
+    @classmethod
+    def find_by_id(cls, id):
+        return cls.query.filter_by(id=id).first()
 
 class QuizToQuestionLink(db.Model):
     __tablename__ = "quiztoquestion"
     id = db.Column(db.Integer, primary_key=True)
     quiz_id = db.Column(db.Integer, db.ForeignKey('quiz.id'), nullable=False)
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
+
+    @classmethod
+    def find_by_quiz_id(cls, quiz_id):
+        return cls.query.filter_by(quiz_id=quiz_id).first()
+
+    @classmethod
+    def find_by_question_id(cls, question_id):
+        return cls.query.filter_by(question_id=question_id).first()
+
+    @classmethod
+    def find_by_id(cls, id):
+        return cls.query.filter_by(id=id).first()
 
 class Vote(db.Model):
     __tablename__ = "vote"
@@ -73,6 +110,18 @@ class Vote(db.Model):
     vote_d = db.Column(db.Integer, default=0)
     started_at = db.Column(db.DateTime, default=datetime.now())
 
+    @classmethod
+    def find_by_question_id(cls, question_id):
+        return cls.query.filter_by(question_id=question_id).first()
+
+    @classmethod
+    def find_by_session_id(cls, session_id):
+        return cls.query.filter_by(session_id=session_id).first()
+
+    @classmethod
+    def find_by_id(cls, id):
+        return cls.query.filter_by(id=id).first()
+
 class Session(db.Model):
     __tablename__ = "session"
     id = db.Column(db.Integer, primary_key=True)
@@ -81,17 +130,34 @@ class Session(db.Model):
     question_id = db.Column(db.Integer, db.ForeignKey('question.id'), nullable=False)
     started_at = db.Column(db.DateTime, default=datetime.now())
 
-class SessionSchema(ma.ModelSchema):
-    class Meta:
-        model = Session
+    @classmethod
+    def find_by_session_code(cls, session_code):
+        return cls.query.filter_by(session_code=session_code).first()
+
+    @classmethod
+    def find_by_question_id(cls, question_id):
+        return cls.query.filter_by(question_id=question_id).first()
+
+    @classmethod
+    def find_by_author_id(cls, author_id):
+        return cls.query.filter_by(author_id=author_id).first()
+
+    @classmethod
+    def find_by_id(cls, id):
+        return cls.query.filter_by(id=id).first()
 
 class UserSchema(ma.ModelSchema):
     class Meta:
         model = User
 
+class SessionSchema(ma.ModelSchema):
+    class Meta:
+        model = Session
+
 class QuizSchema(ma.ModelSchema):
     class Meta:
         model = Quiz
+        exclude = ('author_id',)
 
 class QuestionSchema(ma.ModelSchema):
     class Meta:
@@ -107,3 +173,13 @@ class VoteSchema(ma.ModelSchema):
 
 user_schema = UserSchema()
 users_schema = UserSchema(many=True)
+session_schema = SessionSchema()
+sessions_schema = SessionSchema(many=True)
+quiz_schema = QuizSchema()
+quizzes_schema = QuizSchema(many=True)
+question_schema = QuestionSchema()
+questions_schema = QuestionSchema(many=True)
+quiztoquestion_schema = QuizToQuestionLinkSchema()
+quiztoquestions_schema = QuizToQuestionLinkSchema(many=True)
+vote_schema = VoteSchema()
+votes_schema = VoteSchema(many=True)
