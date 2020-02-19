@@ -22,17 +22,15 @@ class QuizAPi(Resource):
         new_quiz.author_id = 1 
         new_quiz.created_at = datetime.now()
 
-        # Save the new user into the database
+        # Save the new quiz into the database
         db.session.add(new_quiz)
         db.session.commit()
         # success
         return None, 204
 
-
     # PATCH -> Rename a quiz
     @json_required
     def patch(self):
-        # Validate and deserialize input
         received_quiz = Quiz()
         try:
             received_quiz = quiz_schema.load(request.r_data, session=db.session)

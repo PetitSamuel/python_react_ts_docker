@@ -58,7 +58,6 @@ class Quiz(db.Model):
     def find_by_author_and_name(cls, author_id, name):
         return cls.query.filter_by(author_id=author_id, name=name).first()
 
-
 class Question(db.Model):
     __tablename__ = "question"
     id = db.Column(db.Integer, primary_key=True)
