@@ -67,14 +67,14 @@ class Question(db.Model):
     quizzes = db.relationship('QuizToQuestionLink', backref='question')
     votes = db.relationship('Vote', backref='question')
     sessions = db.relationship('Session', backref='question')
-   
-    @classmethod
-    def find_by_username(cls, username):
-        return cls.query.filter_by(username=username).first()
 
     @classmethod
     def find_by_author_id(cls, author_id):
         return cls.query.filter_by(author_id=author_id).first()
+
+    @classmethod
+    def find_by_author_id_and_text(cls, author_id, text):
+        return cls.query.filter_by(author_id=author_id, text=text).first()
 
     @classmethod
     def find_by_id(cls, id):
@@ -161,6 +161,7 @@ class QuizSchema(ma.ModelSchema):
 class QuestionSchema(ma.ModelSchema):
     class Meta:
         model = Question
+        exclude = ('author_id',)
 
 class QuizToQuestionLinkSchema(ma.ModelSchema):
     class Meta:
@@ -177,6 +178,7 @@ sessions_schema = SessionSchema(many=True)
 quiz_schema = QuizSchema()
 quizzes_schema = QuizSchema(many=True)
 question_schema = QuestionSchema()
+delete_question_schema = QuestionSchema(only=['id'])
 questions_schema = QuestionSchema(many=True)
 quiztoquestion_schema = QuizToQuestionLinkSchema()
 quiztoquestions_schema = QuizToQuestionLinkSchema(many=True)

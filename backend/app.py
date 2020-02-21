@@ -7,7 +7,7 @@ from flask_cors import CORS
 from healthcheck import HealthCheck
 import models
 from models import db, User, users_schema, user_schema, ma
-from resources import Api, user, quiz
+from resources import Api, user, quiz, question
 
 app = Flask(__name__)
 redis = Redis(host='redis', port=6379)
@@ -63,8 +63,9 @@ health = HealthCheck(app, '/health', success_ttl=None, failed_ttl=None)
 health.add_check(db_ok)
 
 # Mount our API endpoints
-api.add_resource(user.UserAPi, '/auth/register')
-api.add_resource(quiz.QuizAPi, '/quiz')
+api.add_resource(user.UserAPI, '/auth/register')
+api.add_resource(quiz.QuizAPI, '/quiz')
+api.add_resource(question.QuestionAPI, '/question')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)

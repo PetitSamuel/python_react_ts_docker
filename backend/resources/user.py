@@ -7,7 +7,7 @@ from marshmallow import ValidationError
 from . import json_required
 from models import *
 
-class UserAPi(Resource):
+class UserAPI(Resource):
     @json_required
     def post(self):
         new_user = User()
