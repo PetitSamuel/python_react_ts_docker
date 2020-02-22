@@ -15,11 +15,12 @@ services:
             - FLASK_ENV=${FLASK_ENV}
             - FLASK_SECRET=${FLASK_SECRET}
             - PUBLIC_HOST=${PUBLIC_HOST}
-            - MYSQL_HOST=db
+            - MYSQL_HOST=${MYSQL_HOST}
             - MYSQL_USER=${MYSQL_USER}
             - MYSQL_PASSWORD=${MYSQL_PASSWORD}
             - MYSQL_DATABASE=${MYSQL_DATABASE}
             - ROOT_EMAIL=${ROOT_EMAIL}
+            - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
     client:
         build: ./frontend
         restart: on-failure

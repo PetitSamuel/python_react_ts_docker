@@ -1,0 +1,73 @@
+{ 
+   "Ca":"113190595568162767962",
+   "uc":{ 
+      "token_type":"Bearer",
+      "access_token":"ya29.Il-_B37TRrISGvU8cGMQ_s181bvRaRJdj4WRt9a4V7b16sODQT10aWoHtbWknqpQs3v_8eTmS-eloF_07T9WeL7GHaly10SpEnM-dqTDHrCqUvFJUTxHrAo8W1szHEBNZA",
+      "scope":"email profile https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email openid",
+      "login_hint":"AJDLj6JUa8yxXrhHdWRHIV0S13cAVjde2N4sv0cC8oF0I43gbxfCFLdBEr7SPKmJrjKfziFvHMXXSFItxAY-c-yrFSR7xIiLDg",
+      "expires_in":3599,
+      "id_token":"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc5YzgwOWRkMTE4NmNjMjI4YzRiYWY5MzU4NTk5NTMwY2U5MmI0YzgiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMjcxMjE4NzM2MDE5LWszNXBmbmtoZjhybWh1M2dvMTc0bTI5ZGNsb2xmaDZjLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMjcxMjE4NzM2MDE5LWszNXBmbmtoZjhybWh1M2dvMTc0bTI5ZGNsb2xmaDZjLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEzMTkwNTk1NTY4MTYyNzY3OTYyIiwiaGQiOiJ0Y2QuaWUiLCJlbWFpbCI6InBldGl0c0B0Y2QuaWUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6ImNIdk0yYmstZFg1RXlfRlVSUjdNZXciLCJuYW1lIjoiU2FtdWVsIFBldGl0IiwicGljdHVyZSI6Imh0dHBzOi8vbGg2Lmdvb2dsZXVzZXJjb250ZW50LmNvbS8tV2VfWS1nWlRwSW8vQUFBQUFBQUFBQUkvQUFBQUFBQUFBQUEvQUNIaTNyY09fNGRTS0Q1QlItZHh2RXF0ZS1KRFh3SmNEdy9zOTYtYy9waG90by5qcGciLCJnaXZlbl9uYW1lIjoiU2FtdWVsIiwiZmFtaWx5X25hbWUiOiJQZXRpdCIsImxvY2FsZSI6ImVuLUdCIiwiaWF0IjoxNTgyMzI1NDUyLCJleHAiOjE1ODIzMjkwNTIsImp0aSI6IjJlMzRlZmMwMGNjZjUyODVjOWNhMjIxN2JlYzFjODBhYTk0MjJlNjEifQ.fPI75G03DJqUGS6TilEDi_EseJASZvR2mTSUdmOBGGM0G2TzYjoTN9YW_ZHk9fH0Hplh6K5zbyKhoWGrvcdld3EPd3SOk7PrV0f8ntFFYGaAa8O4X5Tb-v06pLVqriXy6kH_rb75hFmFkrheH-_yRksuePSDrKoxte6BphqyWVa6v2i0KGz-gb_znIbFcfFpjxHmZsLBzf2t0iKqhQcgZx5XoG7jr77vToS5BJb9nXJd9Uv6VVe-e5Q2qkkOxdC2wkjQE7PKKSlwI_QwWWDsLHoK5gQA01sfjIL6tLjkzjbbH203SiQuxzFC5f6FT23OSdYl8e7FyQ6fRf3RzI1QyA",
+      "session_state":{ 
+         "extraQueryParams":{ 
+            "authuser":"0"
+         }
+      },
+      "first_issued_at":1582325443332,
+      "expires_at":1582329042332,
+      "idpId":"google"
+   },
+   "Rt":{ 
+      "eV":"113190595568162767962",
+      "Ad":"Samuel Petit",
+      "JW":"Samuel",
+      "JU":"Petit",
+      "kL":"https://lh6.googleusercontent.com/-We_Y-gZTpIo/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcO_4dSKD5BR-dxvEqte-JDXwJcDw/s96-c/photo.jpg",
+      "Au":"petits@tcd.ie"
+   },
+   "googleId":"113190595568162767962",
+   "tokenObj":{ 
+      "token_type":"Bearer",
+      "access_token":"ya29.Il-_B37TRrISGvU8cGMQ_s181bvRaRJdj4WRt9a4V7b16sODQT10aWoHtbWknqpQs3v_8eTmS-eloF_07T9WeL7GHaly10SpEnM-dqTDHrCqUvFJUTxHrAo8W1szHEBNZA",
+      "scope":"email profile https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email openid",
+      "login_hint":"AJDLj6JUa8yxXrhHdWRHIV0S13cAVjde2N4sv0cC8oF0I43gbxfCFLdBEr7SPKmJrjKfziFvHMXXSFItxAY-c-yrFSR7xIiLDg",
+      "expires_in":3599,
+      "id_token":"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc5YzgwOWRkMTE4NmNjMjI4YzRiYWY5MzU4NTk5NTMwY2U5MmI0YzgiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMjcxMjE4NzM2MDE5LWszNXBmbmtoZjhybWh1M2dvMTc0bTI5ZGNsb2xmaDZjLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMjcxMjE4NzM2MDE5LWszNXBmbmtoZjhybWh1M2dvMTc0bTI5ZGNsb2xmaDZjLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEzMTkwNTk1NTY4MTYyNzY3OTYyIiwiaGQiOiJ0Y2QuaWUiLCJlbWFpbCI6InBldGl0c0B0Y2QuaWUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6ImNIdk0yYmstZFg1RXlfRlVSUjdNZXciLCJuYW1lIjoiU2FtdWVsIFBldGl0IiwicGljdHVyZSI6Imh0dHBzOi8vbGg2Lmdvb2dsZXVzZXJjb250ZW50LmNvbS8tV2VfWS1nWlRwSW8vQUFBQUFBQUFBQUkvQUFBQUFBQUFBQUEvQUNIaTNyY09fNGRTS0Q1QlItZHh2RXF0ZS1KRFh3SmNEdy9zOTYtYy9waG90by5qcGciLCJnaXZlbl9uYW1lIjoiU2FtdWVsIiwiZmFtaWx5X25hbWUiOiJQZXRpdCIsImxvY2FsZSI6ImVuLUdCIiwiaWF0IjoxNTgyMzI1NDUyLCJleHAiOjE1ODIzMjkwNTIsImp0aSI6IjJlMzRlZmMwMGNjZjUyODVjOWNhMjIxN2JlYzFjODBhYTk0MjJlNjEifQ.fPI75G03DJqUGS6TilEDi_EseJASZvR2mTSUdmOBGGM0G2TzYjoTN9YW_ZHk9fH0Hplh6K5zbyKhoWGrvcdld3EPd3SOk7PrV0f8ntFFYGaAa8O4X5Tb-v06pLVqriXy6kH_rb75hFmFkrheH-_yRksuePSDrKoxte6BphqyWVa6v2i0KGz-gb_znIbFcfFpjxHmZsLBzf2t0iKqhQcgZx5XoG7jr77vToS5BJb9nXJd9Uv6VVe-e5Q2qkkOxdC2wkjQE7PKKSlwI_QwWWDsLHoK5gQA01sfjIL6tLjkzjbbH203SiQuxzFC5f6FT23OSdYl8e7FyQ6fRf3RzI1QyA",
+      "session_state":{ 
+         "extraQueryParams":{ 
+            "authuser":"0"
+         }
+      },
+      "first_issued_at":1582325443332,
+      "expires_at":1582329042332,
+      "idpId":"google"
+   },
+   "tokenId":"eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc5YzgwOWRkMTE4NmNjMjI4YzRiYWY5MzU4NTk5NTMwY2U5MmI0YzgiLCJ0eXAiOiJKV1QifQ.eyJpc3MiOiJhY2NvdW50cy5nb29nbGUuY29tIiwiYXpwIjoiMjcxMjE4NzM2MDE5LWszNXBmbmtoZjhybWh1M2dvMTc0bTI5ZGNsb2xmaDZjLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwiYXVkIjoiMjcxMjE4NzM2MDE5LWszNXBmbmtoZjhybWh1M2dvMTc0bTI5ZGNsb2xmaDZjLmFwcHMuZ29vZ2xldXNlcmNvbnRlbnQuY29tIiwic3ViIjoiMTEzMTkwNTk1NTY4MTYyNzY3OTYyIiwiaGQiOiJ0Y2QuaWUiLCJlbWFpbCI6InBldGl0c0B0Y2QuaWUiLCJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiYXRfaGFzaCI6ImNIdk0yYmstZFg1RXlfRlVSUjdNZXciLCJuYW1lIjoiU2FtdWVsIFBldGl0IiwicGljdHVyZSI6Imh0dHBzOi8vbGg2Lmdvb2dsZXVzZXJjb250ZW50LmNvbS8tV2VfWS1nWlRwSW8vQUFBQUFBQUFBQUkvQUFBQUFBQUFBQUEvQUNIaTNyY09fNGRTS0Q1QlItZHh2RXF0ZS1KRFh3SmNEdy9zOTYtYy9waG90by5qcGciLCJnaXZlbl9uYW1lIjoiU2FtdWVsIiwiZmFtaWx5X25hbWUiOiJQZXRpdCIsImxvY2FsZSI6ImVuLUdCIiwiaWF0IjoxNTgyMzI1NDUyLCJleHAiOjE1ODIzMjkwNTIsImp0aSI6IjJlMzRlZmMwMGNjZjUyODVjOWNhMjIxN2JlYzFjODBhYTk0MjJlNjEifQ.fPI75G03DJqUGS6TilEDi_EseJASZvR2mTSUdmOBGGM0G2TzYjoTN9YW_ZHk9fH0Hplh6K5zbyKhoWGrvcdld3EPd3SOk7PrV0f8ntFFYGaAa8O4X5Tb-v06pLVqriXy6kH_rb75hFmFkrheH-_yRksuePSDrKoxte6BphqyWVa6v2i0KGz-gb_znIbFcfFpjxHmZsLBzf2t0iKqhQcgZx5XoG7jr77vToS5BJb9nXJd9Uv6VVe-e5Q2qkkOxdC2wkjQE7PKKSlwI_QwWWDsLHoK5gQA01sfjIL6tLjkzjbbH203SiQuxzFC5f6FT23OSdYl8e7FyQ6fRf3RzI1QyA",
+   "accessToken":"ya29.Il-_B37TRrISGvU8cGMQ_s181bvRaRJdj4WRt9a4V7b16sODQT10aWoHtbWknqpQs3v_8eTmS-eloF_07T9WeL7GHaly10SpEnM-dqTDHrCqUvFJUTxHrAo8W1szHEBNZA",
+   "profileObj":{ 
+      "googleId":"113190595568162767962",
+      "imageUrl":"https://lh6.googleusercontent.com/-We_Y-gZTpIo/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcO_4dSKD5BR-dxvEqte-JDXwJcDw/s96-c/photo.jpg",
+      "email":"petits@tcd.ie",
+      "name":"Samuel Petit",
+      "givenName":"Samuel",
+      "familyName":"Petit"
+   }
+}
+
+{
+"iss":"accounts.google.com",
+"azp":"271218736019-k35pfnkhf8rmhu3go174m29dclolfh6c.apps.googleusercontent.com",
+"aud":"271218736019-k35pfnkhf8rmhu3go174m29dclolfh6c.apps.googleusercontent.com",
+"sub":"113190595568162767962",
+"hd":"tcd.ie",
+"email":"petits@tcd.ie",
+"email_verified":true,
+"at_hash":"EI2pjv9f1VgV169ZdZgbIQ",
+"name":"Samuel Petit",
+"picture":"https://lh6.googleusercontent.com/-We_Y-gZTpIo/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rcO_4dSKD5BR-dxvEqte-JDXwJcDw/s96-c/photo.jpg",
+"given_name":"Samuel",
+"family_name":"Petit",
+"locale":"en-GB",
+"iat":1582338070,
+"exp":1582341670,
+"jti":"19636676ae4e2a66f1766bfc8ddbae69627e1257"
+}

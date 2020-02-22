@@ -11,3 +11,8 @@ flask_restful
 datetime
 marshmallow-sqlalchemy
 marshmallow_sqlalchemy
+google
+google-api-python-client
+google-auth
+google-auth-httplib2
+google-auth-oauthlib

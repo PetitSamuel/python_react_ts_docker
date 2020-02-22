@@ -15,6 +15,8 @@ CORS(app)
 
 # config from .env file linked through docker-compose
 app.config.update({
+    'CORS_HEADERS': 'Content-Type',
+    'GOOGLE_CLIENT_ID': environ['GOOGLE_CLIENT_ID'],
     'SQLALCHEMY_TRACK_MODIFICATIONS': False,
     'SECRET_KEY': environ['FLASK_SECRET'],
     'PREFERRED_URL_SCHEME': 'https',
@@ -64,6 +66,7 @@ health.add_check(db_ok)
 
 # Mount our API endpoints
 api.add_resource(user.UserAPI, '/auth/register')
+api.add_resource(user.GoogleAuthAPI, '/auth/google')
 api.add_resource(quiz.QuizAPI, '/quiz')
 api.add_resource(question.QuestionAPI, '/question')
 
