@@ -19,7 +19,7 @@ class User(db.Model):
     first_name = db.Column(db.String(64), nullable=False)
     last_name = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(120), index=True, unique=True, nullable=False)
-    password = db.Column(db.String(120), nullable=True)
+    picture_url = db.Column(db.String(256), index=False, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now())
     is_admin = db.Column(db.Boolean, default=False)
     quizzes = db.relationship('Quiz', backref='user')
