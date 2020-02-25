@@ -88,6 +88,4 @@ class GoogleAuthAPI(Resource):
         # todo : make sure user is the actual user to update 
         db.session.commit()
         login_user(new_user)
-        print(user_schema.dump(current_user))
-        print(current_user.get_id())
-        return users_schema.dump([existing_user, current_user])
+        return users_schema.dump(existing_user)

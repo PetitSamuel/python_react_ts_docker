@@ -44,8 +44,8 @@ def not_found(e):
 @app.route('/')
 def hello():
     #return jsonify({"no place like": "127.0.0.1"})
-    #return user_schema.dumps(User.find_by_id(1))
-    return str(current_user)
+    return user_schema.dumps(User.find_by_id(1))
+    #return str(current_user)
 
 @app.before_first_request
 def init_db():
