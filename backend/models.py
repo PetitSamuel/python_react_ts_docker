@@ -5,14 +5,17 @@ from marshmallow import ValidationError, Schema, fields
 from flask_marshmallow import Marshmallow
 from datetime import datetime
 from marshmallow_sqlalchemy import field_for, auto_field, SQLAlchemyAutoSchema
+from flask_login import LoginManager, UserMixin
 
 db = SQLAlchemy()
 ma = Marshmallow()
+login_manager = LoginManager()
 
 def init_app(app):
     db.init_app(app)
+    login_manager.init_app(app)
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = "user"
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(64), index=True, unique=True, nullable=False)
@@ -22,6 +25,8 @@ class User(db.Model):
     picture_url = db.Column(db.String(256), index=False, nullable=True)
     created_at = db.Column(db.DateTime, default=datetime.now())
     is_admin = db.Column(db.Boolean, default=False)
+    # todo figure out how to store ints of 21 digits
+    google_id = db.Column(db.String(21), unique=True, index=True, nullable=True)
     quizzes = db.relationship('Quiz', backref='user')
     questions = db.relationship('Question', backref='user')
     sessions = db.relationship('Session', backref='user')
@@ -37,6 +42,10 @@ class User(db.Model):
     @classmethod
     def find_by_id(cls, id):
         return cls.query.filter_by(id=id).first()
+
+    @classmethod
+    def find_by_google_id(cls, google_id):
+        return cls.query.filter_by(google_id=google_id).first()
 
 class Quiz(db.Model):
     __tablename__ = "quiz"

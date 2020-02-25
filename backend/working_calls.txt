@@ -11,7 +11,6 @@ body:
 	"email": "azd@lol.com",
 	"first_name": "Samuel",
 	"last_name": "Petit",
-	"is_admin": "True"
 }
 
 endpoint : /api/quiz

@@ -6,7 +6,7 @@ from redis import Redis
 from flask_cors import CORS
 from healthcheck import HealthCheck
 import models
-from models import db, User, users_schema, user_schema, ma
+from models import db, User, users_schema, user_schema, ma, login_manager
 from resources import Api, user, quiz, question
 
 app = Flask(__name__)
@@ -32,6 +32,7 @@ app.config.update({
 api = Api(app, prefix='/api')
 models.init_app(app)
 ma.init_app(app)
+login_manager.init_app(app)
 
 # Default to 404
 @app.errorhandler(404)
@@ -43,7 +44,8 @@ def not_found(e):
 @app.route('/')
 def hello():
     #return jsonify({"no place like": "127.0.0.1"})
-    return user_schema.dumps(User.find_by_id(1))
+    #return user_schema.dumps(User.find_by_id(1))
+    return str(current_user)
 
 @app.before_first_request
 def init_db():

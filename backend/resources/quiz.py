@@ -42,7 +42,7 @@ class QuizAPI(Resource):
         to_update = Quiz.find_by_id(received_quiz.id)
         # todo : also use author id here
         if not to_update:
-            return {'message': 'Form {} does not exist'.format(received_quiz.id)}, 400
+            return {'message': 'Quiz id {} does not exist'.format(received_quiz.id)}, 400
         
         # todo : make sure user is the actual user to update 
         to_update.name = received_quiz.name

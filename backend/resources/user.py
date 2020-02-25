@@ -8,6 +8,15 @@ from google.auth.transport import requests
 import json
 from . import json_required
 from models import *
+from flask_login import login_user, current_user
+
+@login_manager.user_loader
+def load_user(id):
+    u = User.find_by_id(id)
+    if not user:
+        return None
+    u.id = id
+    return u
 
 class UserAPI(Resource):
     @json_required
@@ -34,31 +43,18 @@ class GoogleAuthAPI(Resource):
     @json_required
     def post(self):
         token = request.json['token_id']
-        idinfo = None
-
-
+        
+        # todo : return error message if token expired
+        if not token:
+            return {'message': 'Expecting token_id field in request body.'}, 422
         # Validate token
-        try:
-            # Specify the CLIENT_ID of the app that accesses the backend:
-            idinfo = id_token.verify_oauth2_token(token, requests.Request(), current_app.config['GOOGLE_CLIENT_ID'])
+        idinfo = id_token.verify_oauth2_token(token, requests.Request(), current_app.config['GOOGLE_CLIENT_ID'])
 
-            # Or, if multiple clients access the backend server:
-            # idinfo = id_token.verify_oauth2_token(token, requests.Request())
-            # if idinfo['aud'] not in [CLIENT_ID_1, CLIENT_ID_2, CLIENT_ID_3]:
-            #     raise ValueError('Could not verify audience.')
+        if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
+            return {'message': 'Token provided is not from google.'}, 400
 
-            if idinfo['iss'] not in ['accounts.google.com', 'https://accounts.google.com']:
-                raise ValueError('Wrong issuer.')
-
-            # If auth request is from a G Suite domain:
-            # if idinfo['hd'] != GSUITE_DOMAIN_NAME:
-            #     raise ValueError('Wrong hosted domain.')
-
-            # ID token is valid. Get the user's Google Account ID from the decoded token.
-            userid = idinfo['sub']
-        except ValueError:
-            # Invalid token
-            return {'message': 'an error occured with google verification'}, 400
+        # ID token is valid. Get the user's Google Account ID from the decoded token.
+        userid = idinfo['sub']
 
         new_user = User()
         new_user = user_schema.load({
@@ -66,12 +62,32 @@ class GoogleAuthAPI(Resource):
             'email': idinfo['email'],
             'first_name': idinfo['given_name'],
             'last_name': idinfo['family_name'],
-            'picture_url': idinfo['picture']
+            'picture_url': idinfo['picture'],
+            'google_id': userid
         })
-        new_user.created_at = datetime.now()
-        
-        # Save the new user into the database
-        db.session.add(new_user)
+
+        existing_user = User.find_by_google_id(userid)
+
+        # new user
+        if not existing_user:  
+            new_user.created_at = datetime.now()
+            
+            # Save the new user into the database
+            db.session.add(new_user)
+            db.session.commit()
+            login_user(new_user)
+            # success
+            return None, 204
+
+        # otherwise update user with new values
+        existing_user.email = new_user.email
+        existing_user.first_name = new_user.first_name
+        existing_user.last_name = new_user.last_name
+        existing_user.picture_url = new_user.picture_url
+
+        # todo : make sure user is the actual user to update 
         db.session.commit()
-        # success
-        return None, 204
+        login_user(new_user)
+        print(user_schema.dump(current_user))
+        print(current_user.get_id())
+        return users_schema.dump([existing_user, current_user])
